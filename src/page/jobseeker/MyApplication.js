@@ -47,7 +47,7 @@ export default function MyApplication() {
           <div className="row m-2 justify-content-center">
             <div className="col-md-2 p-0">
               <img
-                src={`${process.env.REACT_APP_SERVER_URL}/img/${el.job_detail.image}`}
+                src={`${process.env.REACT_APP_SERVER_URL}/job_img/${el.job_detail.image}`}
                 alt="job_img"
                 style={{ width: "100%", height: "200px" }}
               />

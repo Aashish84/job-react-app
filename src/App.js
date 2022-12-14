@@ -14,6 +14,7 @@ import MyApplications from "./page/employer/MyApplication";
 import MyJobs from "./page/employer/MyJobs";
 import AddJob from "./page/employer/AddJob";
 import UpdateJob from "./page/employer/UpdateJob";
+import UserPage from "./page/UserPage";
 
 export default function App() {
   const dispatch = useDispatch();
@@ -53,6 +54,7 @@ export default function App() {
         <Route index element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/user" element={<UserPage />} />
 
         <Route element={<ProtectedRoute role="jobseeker" />}>
           <Route path="/applied-jobs" element={<MyApplication />} />
@@ -64,6 +66,11 @@ export default function App() {
           <Route path="/add-jobs" element={<AddJob />} />
           <Route path="/update-jobs/:id" element={<UpdateJob />} />
         </Route>
+
+        <Route
+          path="*"
+          element={<h1 className="text-center">404 page not found</h1>}
+        />
       </Routes>
     </>
   );

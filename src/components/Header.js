@@ -70,16 +70,23 @@ export default function Header() {
                 </>
               )}
               {isLoggedIn && (
-                <li className="nav-item">
-                  <button
-                    className="nav-link"
-                    style={{ border: "none", backgroundColor: "#f8f9fa" }}
-                    type="button"
-                    onClick={handleLogout}
-                  >
-                    logout
-                  </button>
-                </li>
+                <>
+                  <li>
+                    <Link to="user" className="nav-link">
+                      profile
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <button
+                      className="nav-link"
+                      style={{ border: "none", backgroundColor: "#f8f9fa" }}
+                      type="button"
+                      onClick={handleLogout}
+                    >
+                      logout
+                    </button>
+                  </li>
+                </>
               )}
             </ul>
           </div>

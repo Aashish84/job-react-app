@@ -14,6 +14,7 @@ export default function Register() {
     password: "12345678",
     name: "",
     role: "jobseeker",
+    avatar: null,
   });
 
   const [apiError, setAPIError] = useState({
@@ -33,9 +34,16 @@ export default function Register() {
     e.preventDefault();
     // console.log(formData);
     try {
+      let form_data = new FormData();
+      form_data.append("name", formData.name);
+      form_data.append("role", formData.role);
+      form_data.append("avatar", formData.avatar);
+      form_data.append("email", formData.email);
+      form_data.append("password", formData.password);
+
       let { data: tokenData } = await axios.post(
         `${process.env.REACT_APP_SERVER_URL}/register`,
-        formData
+        form_data
       );
 
       // call get-user api
@@ -80,11 +88,11 @@ export default function Register() {
   }
 
   function handleChange(e) {
-    const { name, value } = e.target;
+    const { name, value, type, files } = e.target;
     setFormData((prev) => {
       return {
         ...prev,
-        [name]: value,
+        [name]: type === "file" ? files[0] : value,
       };
     });
   }
@@ -182,6 +190,26 @@ export default function Register() {
                         />
                         <label className="form-label" htmlFor="form3Example1w">
                           password
+                          <span className="text-danger mx-2">
+                            {apiError.password}
+                          </span>
+                        </label>
+                      </div>
+                      <div className="form-outline">
+                        <input
+                          type="file"
+                          id="form3Example1file"
+                          className="form-control"
+                          name="avatar"
+                          onChange={handleChange}
+                        />
+                        <label
+                          className="form-label"
+                          htmlFor="form3Example1file"
+                        >
+                          {formData.role === "jobseeker"
+                            ? "cv should be pdf"
+                            : "file should be jpg or png"}
                           <span className="text-danger mx-2">
                             {apiError.password}
                           </span>
