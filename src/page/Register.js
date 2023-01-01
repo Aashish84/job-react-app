@@ -119,6 +119,13 @@ export default function Register() {
 
                 <form className="px-md-2" onSubmit={handleSubmit}>
                   <div className="form-outline mb-4">
+                    <label
+                      className="form-label required-field"
+                      htmlFor="form3Example1q"
+                    >
+                      Email
+                      <span className="text-danger mx-2">{apiError.email}</span>
+                    </label>
                     <input
                       type="email"
                       id="form3Example1q"
@@ -127,15 +134,20 @@ export default function Register() {
                       value={formData.email}
                       onChange={handleChange}
                     />
-                    <label className="form-label" htmlFor="form3Example1q">
-                      Email
-                      <span className="text-danger mx-2">{apiError.email}</span>
-                    </label>
                   </div>
 
                   <div className="row">
                     <div className="col-md-6 mb-4">
                       <div className="form-outline datepicker">
+                        <label
+                          htmlFor="exampleDatepicker1"
+                          className="form-label required-field"
+                        >
+                          Name
+                          <span className="text-danger mx-2">
+                            {apiError.name}
+                          </span>
+                        </label>
                         <input
                           type="text"
                           className="form-control"
@@ -144,15 +156,6 @@ export default function Register() {
                           value={formData.name}
                           onChange={handleChange}
                         />
-                        <label
-                          htmlFor="exampleDatepicker1"
-                          className="form-label"
-                        >
-                          Name
-                          <span className="text-danger mx-2">
-                            {apiError.name}
-                          </span>
-                        </label>
                       </div>
                     </div>
                   </div>
@@ -169,7 +172,7 @@ export default function Register() {
                       <option value="employer">employer</option>
                     </select>
                     <label
-                      className="form-label mx-2 text-primary"
+                      className="form-label mx-2 text-primary required-field"
                       htmlFor="roleform"
                     >
                       role
@@ -178,8 +181,17 @@ export default function Register() {
                   </div>
 
                   <div className="row mb-4 pb-2 pb-md-0 mb-md-5">
-                    <div className="col-md-6">
+                    <div className="col-md-8">
                       <div className="form-outline">
+                        <label
+                          className="form-label required-field"
+                          htmlFor="form3Example1w"
+                        >
+                          password
+                          <span className="text-danger mx-2">
+                            {apiError.password}
+                          </span>
+                        </label>
                         <input
                           type="password"
                           id="form3Example1w"
@@ -188,32 +200,26 @@ export default function Register() {
                           value={formData.password}
                           onChange={handleChange}
                         />
-                        <label className="form-label" htmlFor="form3Example1w">
-                          password
-                          <span className="text-danger mx-2">
-                            {apiError.password}
-                          </span>
-                        </label>
                       </div>
                       <div className="form-outline">
-                        <input
-                          type="file"
-                          id="form3Example1file"
-                          className="form-control"
-                          name="avatar"
-                          onChange={handleChange}
-                        />
                         <label
-                          className="form-label"
+                          className="text-danger mt-2"
                           htmlFor="form3Example1file"
                         >
                           {formData.role === "jobseeker"
-                            ? "cv should be pdf"
-                            : "file should be jpg or png"}
+                            ? "CV : cv should be pdf"
+                            : "LOGO : image should be jpg or png"}
                           <span className="text-danger mx-2">
                             {apiError.password}
                           </span>
                         </label>
+                        <input
+                          type="file"
+                          id="form3Example1file"
+                          className="mt-2 form-control"
+                          name="avatar"
+                          onChange={handleChange}
+                        />
                       </div>
                     </div>
                   </div>

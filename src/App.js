@@ -15,6 +15,7 @@ import MyJobs from "./page/employer/MyJobs";
 import AddJob from "./page/employer/AddJob";
 import UpdateJob from "./page/employer/UpdateJob";
 import UserPage from "./page/UserPage";
+import JobPage from "./page/JobPage";
 
 export default function App() {
   const dispatch = useDispatch();
@@ -67,6 +68,7 @@ export default function App() {
           <Route path="/update-jobs/:id" element={<UpdateJob />} />
         </Route>
 
+        <Route path="/job/:id" element={<JobPage />} />
         <Route
           path="*"
           element={<h1 className="text-center">404 page not found</h1>}

@@ -44,7 +44,7 @@ export default function MyApplication() {
     <div className="container m-auto">
       {apiData.map((el) => {
         return (
-          <div className="row m-2 justify-content-center">
+          <div className="row m-2 justify-content-center" key={el._id}>
             <div className="col-md-2 p-0">
               <img
                 src={`${process.env.REACT_APP_SERVER_URL}/job_img/${el.job_detail.image}`}
@@ -52,9 +52,13 @@ export default function MyApplication() {
                 style={{ width: "100%", height: "200px" }}
               />
             </div>
-            <div className="col-md-6" style={{ backgroundColor: "#c0c0c0aa" }}>
-              <h1>job_title : {el.job_detail.title}</h1>
-              <h2>employer : {el.job_detail.employer_detail.name}</h2>
+            <div
+              className="col-md-6 text-capitalize"
+              style={{ backgroundColor: "#c0c0c0aa" }}
+            >
+              <h1>{el.job_detail.title}</h1>
+              <h2>by : {el.job_detail.employer_detail.name}</h2>
+              <Link to={`/job/${el._id}`}>view</Link>
             </div>
           </div>
         );

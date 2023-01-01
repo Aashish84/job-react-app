@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Pagination from "@mui/material/Pagination";
-import NotLoginModal from "./NotLoginModal";
+import ApplyModal from "../../components/ApplyModal";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   let [clickedjob, setClickedJob] = useState({});
@@ -75,7 +76,12 @@ export default function Home() {
                       <h3>{`posted by :${el.employer[0].name}`}</h3>
                     </div>
                     <div>
-                      <h2 className="m-0 p-0">{`title : ${el.title}`}</h2>
+                      <Link
+                        to={`/job/${el._id}`}
+                        style={{ textDecoration: "none", color: "#afd5f0" }}
+                      >
+                        <h2 className="m-0 p-0">{`title : ${el.title}`}</h2>
+                      </Link>
                       <p>{`expire on : ${year}-${month}-${day}`}</p>
                       <button
                         className="btn btn-success"
@@ -105,7 +111,7 @@ export default function Home() {
           onChange={handlePaginationChange}
         />
       </div>
-      <NotLoginModal
+      <ApplyModal
         open={open}
         handleClose={handleClose}
         clickedjob={clickedjob}

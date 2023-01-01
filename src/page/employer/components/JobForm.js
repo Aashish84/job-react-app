@@ -55,6 +55,21 @@ export default function JobForm(props) {
           </small>
         )}
       </div>
+      <div className="form-group">
+        <label htmlFor="exampleInput2">job description :</label>
+        <textarea
+          className="form-control"
+          id="exampleInput2"
+          name="description"
+          value={props.formData.description}
+          onChange={props.handleChange}
+        />
+        {props.formDataError.description && (
+          <small id="emailHelp" className="form-text text-danger">
+            {props.formDataError.description}
+          </small>
+        )}
+      </div>
       <div className="d-flex align-items-center m-2">
         <button type="submit" className="btn btn-success">
           submit

@@ -11,6 +11,7 @@ export default function UpdateJob() {
     title: "",
     expire_date: "",
     avatar: "",
+    description: "",
     error: "",
   });
 
@@ -18,6 +19,7 @@ export default function UpdateJob() {
     title: "",
     expire_date: "",
     avatar: null,
+    description: "",
     image: "",
   });
 
@@ -25,7 +27,7 @@ export default function UpdateJob() {
     try {
       const access_token = localStorage.getItem("access_token");
 
-      const { data } = await axios.get(
+      const { data: resp_data } = await axios.get(
         `${process.env.REACT_APP_SERVER_URL}/jobs/${id}`,
         {
           headers: {
@@ -34,6 +36,7 @@ export default function UpdateJob() {
         }
       );
 
+      let data = resp_data[0];
       let date = new Date(data.expire_date);
 
       setFormData((prev) => {

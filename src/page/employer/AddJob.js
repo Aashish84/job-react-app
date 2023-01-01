@@ -11,12 +11,14 @@ export default function AddJob() {
     title: "",
     expire_date: "",
     avatar: "",
+    descripton: "",
     error: "",
   });
 
   const [formData, setFormData] = useState({
-    title: "",
+    title: "xyz",
     expire_date: "",
+    description: "hlo",
     avatar: null,
   });
 
@@ -66,6 +68,7 @@ export default function AddJob() {
         form_data.append("title", formData.title);
         form_data.append("expire_date", formData.expire_date);
         form_data.append("avatar", formData.avatar);
+        form_data.append("description", formData.descripton);
 
         const access_token = localStorage.getItem("access_token");
 

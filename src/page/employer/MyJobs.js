@@ -84,8 +84,12 @@ export default function MyJobs() {
                 <th scope="row">{index + 1}</th>
                 <td>{el.title}</td>
                 <td>
-                  {`${el.applicants.length} `}
-                  <Link to={`/applications/${el._id}`}>view</Link>
+                  {`${el.applicants.length}`}
+                  {el.applicants.length > 0 && (
+                    <>
+                      <Link to={`/applications/${el._id}`}>view</Link>
+                    </>
+                  )}
                 </td>
                 <td>
                   <button
